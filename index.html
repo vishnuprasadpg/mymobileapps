@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Compass App</title>
+	<style>
+		body{
+			background-color: #fc8742;
+		}
+	</style>
+	<script src="cordova.js"></script>	
+	<script src="js/jquery-2.0.1.js"></script>
+	<script src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js"></script>
+	</head>
+	<body>
+		<div class="maincontainer">
+			<img src="images/compass-rose.png" id="compassimg"/>
+		</div>
+	<script>
+		
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    onDeviceReady();
+    function onDeviceReady() {
+		var options = {
+			frequency : 50 //sets the compass heading to be updated every 50 milliseconds
+		};
+
+		navigator.compass.watchHeading(onSuccess, onError, options); //gets the compass heading from device and passes heading to onSuccess function
+    }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        $("img#compassimg").rotate(heading.magneticHeading);
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(compassError) {
+        alert('Compass Error: ' + compassError.code);
+    }
+	</script>
+		
+	</body>
+</html>
