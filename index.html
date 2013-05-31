@@ -7,16 +7,21 @@
 		body{
 			background-color: #fc8742;
 		}
+		#needleimg{
+			position: absolute;
+			top:57px;
+			left: 142px;
+			position: absolute;
+		}
 	</style>
-	<script src="cordova.js"></script>	
 	<script src="js/jquery-2.0.1.js"></script>
 	<script src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js"></script>
 	</head>
 	<body>
 		<div class="maincontainer">
 			<img src="images/compass-rose.png" id="compassimg"/>
+			<img src="http://nathanhedglin.us/images/needle.png" id="needleimg" />
 		</div>
-		<a href="camera.html">Next Camera >></a>
 	<script>
 		
     // Wait for Cordova to load
@@ -37,7 +42,7 @@
     // onSuccess: Get the current heading
     //
     function onSuccess(heading) {
-        $("img#compassimg").rotate(heading.magneticHeading);
+        $("img#needleimg").rotate(heading.magneticHeading);
     }
 
     // onError: Failed to get the heading
